@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>锐评你的朋友圈</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 上传内容容器，尺寸为310px*460px -->
+        <div class="upload-box" id="uploadBox" style="width:310px; height:460px;">
+            <img id="previewImg" class="preview-img" style="display: none; width:100%; height:100%; object-fit:cover; object-position:top;" />
+            <div id="uploadPlus" class="upload-plus" style="line-height:490px; font-size:60px;">+</div>
+            <!-- 删除按钮 -->
+            <div id="deleteBtn" class="delete-btn" style="display: none;">×</div>
+        </div>
+        
+        <!-- 描述图片 -->
+        <img class="desc-img" src="images/首页文字描述.png" alt="描述文字" />
+        
+        <!-- 底部按钮区域 - 模式选择和生成按钮在同一水平 -->
+        <div class="bottom-buttons">
+            <!-- 模式选择 -->
+            <div class="mode-selection">
+                <div class="mode-item selected" data-mode="devil">
+                    <div class="mode-emoji" style="font-size:16px;">😈</div>
+                    <div class="mode-text" style="font-size:12px;">恶魔模式</div>
+                </div>
+                <div class="mode-item" data-mode="angel">
+                    <div class="mode-emoji" style="font-size:16px;">👼</div>
+                    <div class="mode-text" style="font-size:12px;">天使模式</div>
+                </div>
+            </div>
+            
+            <!-- 生成按钮 -->
+            <img class="btn-img" src="images/生成button.png" alt="生成按钮" id="generateBtn" />
+        </div>
+        
+        <!-- 隐藏的文件输入 -->
+        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+    </div>
+
+    <!-- 生成中页面 -->
+    <div class="generating-page" id="generatingPage" style="display: none;">
+        <div class="generating-content">
+            <div class="loading-animation">
+                <div class="spinner"></div>
+            </div>
+            <div class="loading-text" id="loadingText">生成中，请稍后</div>
+            <div class="quote-container">
+                <div class="quote-text" id="quoteText">人生就像一盒巧克力，你永远不知道会得到什么。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 结果页面 -->
+    <div class="result-page" id="resultPage" style="display: none;">
+        <div class="container">
+            <!-- 上传内容容器，尺寸为310px*460px - 与首页一致 -->
+            <div class="upload-box" id="resultUploadBox" style="width:310px; height:460px;">
+                <img id="resultImg" class="preview-img" style="width:100%; height:100%; object-fit:cover; object-position:top;" />
+                <!-- 锐评内容覆盖层 -->
+                <div class="review-overlay">
+                    <div class="tag-container">
+                        <span class="tag-text" id="tagText" style="font-size:24px; font-weight:bold;"></span>
+                    </div>
+                    <div class="review-container">
+                        <div class="review-text" id="reviewText" style="font-size:16px; font-weight:400;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 描述图片 -->
+            <img class="desc-img" src="images/首页文字描述.png" alt="描述文字" />
+            
+            <!-- 底部按钮区域 - 模式选择和重新生成按钮在同一水平 -->
+            <div class="bottom-buttons">
+                <!-- 模式选择 -->
+                <div class="mode-selection">
+                    <div class="mode-item selected" data-mode="devil">
+                        <div class="mode-emoji" style="font-size:16px;">😈</div>
+                        <div class="mode-text" style="font-size:12px;">恶魔模式</div>
+                    </div>
+                    <div class="mode-item" data-mode="angel">
+                        <div class="mode-emoji" style="font-size:16px;">🥰</div>
+                        <div class="mode-text" style="font-size:12px;">天使模式</div>
+                    </div>
+                </div>
+                
+                <!-- 重新生成按钮 -->
+                <img class="btn-img" src="images/重新生成.png" alt="重新生成按钮" id="regenerateBtn" />
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

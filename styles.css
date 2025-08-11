@@ -1,0 +1,407 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 56px;
+    background: #f5f5f5;
+    min-height: 100vh;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 标题样式 */
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    margin-top: 0;
+}
+
+.ip-address {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+/* 上传区域样式 */
+.upload-box {
+    width: 333px;
+    height: 490px;
+    background: #f8fcf6;
+    border: 2px dashed #7ed957;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.upload-box:hover {
+    border-color: #6bc847;
+    background: #f0f8f0;
+}
+
+.upload-plus {
+    font-size: 64px;
+    color: #7ed957;
+    font-weight: 300;
+}
+
+.preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 20px;
+}
+
+/* 删除按钮 */
+.delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: rgba(0, 0, 0, 0.6);
+    transform: scale(1.1);
+}
+
+/* 描述图片 */
+.desc-img {
+    max-width: 330px;
+    width: 100%;
+    display: block;
+    margin: 0 auto 30px auto;
+}
+
+/* 底部按钮区域 */
+.bottom-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 330px;
+    margin-top: 10px;
+}
+
+/* 模式选择样式 - 按照设计代码调整 */
+.mode-selection {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.mode-item {
+    width: 80px;
+    height: 50px;
+    background: #d9d9d9; /* Color(red: 0.85, green: 0.85, blue: 0.85) */
+    border-radius: 23px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    /* 确保按钮可以点击 */
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.mode-item:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.mode-item.selected {
+    background: #333;
+    color: white;
+    box-shadow: 0 4px 15px rgba(51, 51, 51, 0.3);
+}
+
+.mode-item.selected .mode-emoji {
+    /* 确保表情符号始终可见，不被背景色遮挡 */
+    filter: none;
+    color: inherit;
+    z-index: 2;
+    position: relative;
+    font-size: 20px;
+}
+
+.mode-item.selected .mode-text {
+    /* 确保文字始终可见，不被背景色遮挡 */
+    color: inherit;
+    z-index: 2;
+    position: relative;
+    font-size: 14px;
+}
+
+/* 确保模式选择按钮的子元素不会影响点击，但允许事件冒泡 */
+.mode-emoji, .mode-text {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* 生成按钮图片样式 */
+.btn-img {
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-img:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.btn-img.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(1);
+}
+
+/* 生成中页面样式 */
+.generating-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(220, 255, 199, 1) 0%, rgba(248, 248, 248, 1) 50%, rgba(148, 209, 246, 1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.generating-content {
+    text-align: center;
+    color: #333;
+    padding: 40px 20px;
+}
+
+.loading-animation {
+    margin-bottom: 30px;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(51, 51, 51, 0.3);
+    border-top: 4px solid #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.quote-container {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.quote-text {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.9;
+    font-style: italic;
+    transition: opacity 0.8s ease;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/* 结果页面样式 */
+.result-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+/* 锐评内容覆盖层 */
+.review-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    color: white;
+    padding: 24px;
+    border-radius: 0 0 20px 20px;
+    max-height: 60%;
+    overflow-y: auto;
+    backdrop-filter: blur(5px);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+/* 自定义滚动条样式 */
+.review-overlay::-webkit-scrollbar {
+    width: 6px;
+}
+
+.review-overlay::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.review-overlay::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.review-overlay::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.tag-container, .review-container {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.tag-container {
+    margin-bottom: 20px;
+}
+
+
+.tag-text {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.review-text {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 16px;
+    border-radius: 8px;
+    line-height: 1.6;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    border-left: 3px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    margin-top: 12px;
+    text-align: left;
+    white-space: pre-line;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.tag-label, .review-label {
+    font-weight: 600;
+    color: white;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+    
+    .upload-box {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .btn-main {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .result-content {
+        padding: 15px;
+    }
+    
+    .image-area {
+        height: 250px;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container, .generating-content, .result-content {
+    animation: fadeIn 0.5s ease;
+} 
